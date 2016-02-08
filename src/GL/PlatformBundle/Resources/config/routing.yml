@@ -1,3 +1,12 @@
-hello_the_world:
-    path:     /hello-world
+# src/Gl/PlatformBundle/Resources/confgi/routing.yml
+gl_platform_home:
+    path:     /platform
     defaults: { _controller: GLPlatformBundle:Advert:index }
+    
+gl_platform_view:
+    path:     /platform/advert/{id}
+    defaults: { _controller: GLPlatformBundle:Advert:view }
+    
+gl_platform_add:
+    path:     /platform/add
+    defaults: { _controller: GLPlatformBundle:Advert:add }

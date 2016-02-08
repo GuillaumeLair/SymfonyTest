@@ -9,6 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdvertController extends Controller
 {
+    //On défini ce que le controlleur renvoie 
+    //selon la route sélectionner. 
+    //Ici quand l'action index est invoqué
+    
     public function indexAction()
     {
        $content = $this->get('templating')
@@ -17,4 +21,13 @@ class AdvertController extends Controller
 	   
 		return new Response($content);
     }
+    
+    //Action View de notre routing avec le paramètre id 
+    public function viewAction($id) {
+        //on recupere directement l'id via l'URL. 
+        // On passera ensuite l'annonce a la vue pour qu'elle 
+        // puisse l'afficher selon le template
+        return new Response("Affichage de l'annonce d'id : ".$id);
+    }
+    
 }
