@@ -11,7 +11,9 @@ class AdvertController extends Controller
 {
     public function indexAction()
     {
-       $content = $this->get('templating')->render('GLPlatformBundle:Advert:index.html.twig');
+       $content = $this->get('templating')
+               ->render('GLPlatformBundle:Advert:index.html.twig',
+                       array('nom' => 'winzou'));
 	   
 		return new Response($content);
     }
