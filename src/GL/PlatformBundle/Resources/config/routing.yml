@@ -1,21 +1,43 @@
 # src/Gl/PlatformBundle/Resources/config/routing.yml
+#Route de l'accueil avec parametre de page par défauts a 1
 gl_platform_home:
-    path:     /platform
-    defaults: { _controller: GLPlatformBundle:Advert:index }
-    
+    path:     /{page}
+    defaults: 
+        _controller: GLPlatformBundle:Advert:index
+        page:        1
+    requirements:
+        page:  \d*
+
+#Route d'une page de visualisation d'une annonce avec un prérequis sur l'id
 gl_platform_view:
     path:     /advert/{id}
     defaults: { _controller: GLPlatformBundle:Advert:view }
-    
+    requirements:
+        id:  \d+
+
+#Les différentes routes pour le CUD (Ajout, modification et supression)    
 gl_platform_add:
     path:     /add
     defaults: { _controller: GLPlatformBundle:Advert:add }
     
-oc_platform_view_slug:
-    path:     /{year}/{slug}.{_format}
-    defaults:
-        _controller: GLPlatformBundle:Advert:viewSlug 
-        _format:      html
+gl_platform_edit:
+    path:     /edit/{id}
+    defaults: { _controller: GlPlatformBundle:Advert:edit }
     requirements:
-        year:   \d{4}
-        format: html|xml
+        id: \d+
+        
+gl_platform_delete:
+    path:     /delete/{id}
+    defaults: { _controller: GLPlatformBundle:Advert:delete }
+    requirements:
+        id:  \d+
+    
+#Exemple de route avec parametre par défauts (formats) et des requis    
+#oc_platform_view_slug:
+#    path:     /{year}/{slug}.{_format}
+#    defaults:
+#        _controller: GLPlatformBundle:Advert:viewSlug 
+#        _format:      html
+#    requirements:
+#        year:   \d{4}
+#        format: html|xml
