@@ -1,12 +1,21 @@
-# src/Gl/PlatformBundle/Resources/confgi/routing.yml
+# src/Gl/PlatformBundle/Resources/config/routing.yml
 gl_platform_home:
     path:     /platform
     defaults: { _controller: GLPlatformBundle:Advert:index }
     
 gl_platform_view:
-    path:     /platform/advert/{id}
+    path:     /advert/{id}
     defaults: { _controller: GLPlatformBundle:Advert:view }
     
 gl_platform_add:
-    path:     /platform/add
+    path:     /add
     defaults: { _controller: GLPlatformBundle:Advert:add }
+    
+oc_platform_view_slug:
+    path:     /{year}/{slug}.{_format}
+    defaults:
+        _controller: GLPlatformBundle:Advert:viewSlug 
+        _format:      html
+    requirements:
+        year:   \d{4}
+        format: html|xml
